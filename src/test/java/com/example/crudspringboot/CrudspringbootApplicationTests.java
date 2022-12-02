@@ -1,13 +1,13 @@
-package com.example.crudspringboot;
+// package com.example.crudspringboot;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class CrudspringbootApplicationTests {
+// @SpringBootTest
+// class CrudspringbootApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }
