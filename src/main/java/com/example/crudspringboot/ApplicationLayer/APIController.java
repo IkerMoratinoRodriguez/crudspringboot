@@ -1,4 +1,4 @@
-package com.example.crudspringboot.controler;
+package com.example.crudspringboot.ApplicationLayer;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.crudspringboot.interfaceService.IpersonaService;
-import com.example.crudspringboot.modelo.Persona;
+import com.example.crudspringboot.DomainLayer.IpersonaService;
+import com.example.crudspringboot.DomainLayer.Persona;
 
 @RestController
 public class APIController {

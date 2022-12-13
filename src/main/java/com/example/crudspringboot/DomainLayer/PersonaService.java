@@ -1,4 +1,4 @@
-package com.example.crudspringboot.service;
+package com.example.crudspringboot.DomainLayer;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,9 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.crudspringboot.Repository.IRepository;
-import com.example.crudspringboot.interfaceService.IpersonaService;
-import com.example.crudspringboot.modelo.Persona;
+import com.example.crudspringboot.InfraestructureLayer.IRepository;
 
 @Service
 public class PersonaService implements IpersonaService{

@@ -1,4 +1,4 @@
-package com.example.crudspringboot.modelo;
+package com.example.crudspringboot.DomainLayer;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
