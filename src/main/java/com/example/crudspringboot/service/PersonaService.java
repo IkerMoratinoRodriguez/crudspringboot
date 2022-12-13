@@ -6,15 +6,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.crudspringboot.Repository.IRepository;
 import com.example.crudspringboot.interfaceService.IpersonaService;
-import com.example.crudspringboot.interfaces.IPersona;
 import com.example.crudspringboot.modelo.Persona;
 
 @Service
 public class PersonaService implements IpersonaService{
 
     @Autowired
-    private IPersona data;
+    private IRepository data;
 
     @Override
     public List<Persona> listar() {
