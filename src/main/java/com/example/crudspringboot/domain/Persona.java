@@ -1,4 +1,4 @@
-package com.example.crudspringboot.DomainLayer;
+package com.example.crudspringboot.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -62,10 +62,5 @@ public class Persona {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
-
-    
-
-    
 
 }

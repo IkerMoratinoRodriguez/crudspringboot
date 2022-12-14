@@ -1,4 +1,4 @@
-package com.example.crudspringboot.ApplicationLayer;
+package com.example.crudspringboot.application;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.crudspringboot.DomainLayer.IpersonaService;
-import com.example.crudspringboot.DomainLayer.Persona;
+import com.example.crudspringboot.domain.Persona;
+import com.example.crudspringboot.domain.service.IpersonaService;
 
 @RestController
 public class APIController {
@@ -24,16 +24,13 @@ public class APIController {
     @GetMapping("/crudAPI/new/{id}/{nombre}/{telefono}")
     public String agrgar(@PathVariable int id, @PathVariable String nombre, @PathVariable String telefono){
         Persona p = new Persona(id, nombre, telefono);
-        int res = service.save(p);
-        if (res == 1)
-            return "Persona añadida correctamente.";
-        else
-            return "Fallo al añadir a la persona.";
+        service.save(p);
+        return "Persona añadida correctamente";
     }
 
     @GetMapping("/crudAPI/delete/{id}")
     public String agrgar(@PathVariable int id){
-        if (service.listarId(id)== null)
+        if (service.listarPorId(id)== null)
             return "No existe la Persona con id "+id;
         else{
             service.delete(id);

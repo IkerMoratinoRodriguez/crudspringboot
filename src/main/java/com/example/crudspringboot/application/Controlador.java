@@ -1,4 +1,4 @@
-package com.example.crudspringboot.ApplicationLayer;
+package com.example.crudspringboot.application;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.crudspringboot.DomainLayer.IpersonaService;
-import com.example.crudspringboot.DomainLayer.Persona;
+import com.example.crudspringboot.domain.Persona;
+import com.example.crudspringboot.domain.service.IpersonaService;
 
 @Controller
 @RequestMapping
@@ -44,7 +44,7 @@ public class Controlador {
 
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable int id, Model model){
-        Optional<Persona> persona = service.listarId(id);
+        Optional<Persona> persona = service.listarPorId(id);
         model.addAttribute("persona", persona);
         return "form"; //para guardar también usa el método save de arriba, igual que new
     }
