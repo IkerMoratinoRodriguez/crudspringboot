@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.example.crudspringboot.domain.Persona;
 
-public interface IpersonaService {
+public interface IPersonaService{
     public List<Persona> listar();
     public Optional<Persona>listarPorId(int id);
     public void save(Persona p);

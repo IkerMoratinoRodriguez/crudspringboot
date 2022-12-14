@@ -10,11 +10,11 @@ import com.example.crudspringboot.domain.repository.PersonaRepository;
 
 
 @Service
-public class PersonaService implements IpersonaService{
+public class PersonaService implements IPersonaService{
 
     private final PersonaRepository personaRepository;
 
-    public PersonaService(PersonaRepository personaRepository){
+    public PersonaService(final PersonaRepository personaRepository){
         this.personaRepository=personaRepository;
     }
 

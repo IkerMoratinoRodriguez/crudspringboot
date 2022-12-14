@@ -1,4 +1,4 @@
-package com.example.crudspringboot.infraestructure;
+package com.example.crudspringboot.infraestructure.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

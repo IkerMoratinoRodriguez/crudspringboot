@@ -13,19 +13,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.crudspringboot.domain.Persona;
-import com.example.crudspringboot.domain.service.IpersonaService;
+import com.example.crudspringboot.domain.service.IPersonaService;
 
 @Controller
 @RequestMapping
 public class Controlador {
     
+    private final IPersonaService personaService;
+
     @Autowired
-    private IpersonaService service;
+    public Controlador(IPersonaService personaService){
+        this.personaService=personaService;
+    }
 
 
     @GetMapping("/listar")
     public String listar(Model model){
-        List<Persona> personas = service.listar();
+        List<Persona> personas = personaService.listar();
         model.addAttribute("personas", personas);
         return "index";
     }
@@ -38,20 +42,20 @@ public class Controlador {
 
     @PostMapping("/save")
     public String save(@Validated Persona p, Model model){
-        service.save(p);
+        personaService.save(p);
         return "redirect:/listar";
     }
 
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable int id, Model model){
-        Optional<Persona> persona = service.listarPorId(id);
+        Optional<Persona> persona = personaService.listarPorId(id);
         model.addAttribute("persona", persona);
         return "form"; //para guardar también usa el método save de arriba, igual que new
     }
 
     @GetMapping("/eliminar/{id}")
     public String delete(Model model, @PathVariable int id){
-        service.delete(id);
+        personaService.delete(id);
         return "redirect:/listar";
     }
 
