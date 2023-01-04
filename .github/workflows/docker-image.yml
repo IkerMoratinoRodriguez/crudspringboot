@@ -42,7 +42,7 @@ jobs:
             ./Containerfile
 
     # Podman Login action (https://github.com/redhat-actions/podman-login) also be used to log in,
-    # in which case 'username' and 'password' can be omitted.
+    # in which case 'username' and 'password' can be omitted
       - name: Push to dockerhub
         id: push-to-docker-hub
         uses: redhat-actions/push-to-registry@v2
