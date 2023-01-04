@@ -1,5 +1,6 @@
-name: Build and publish a Docker image
+name: Build docker image
 on:
+  workflow_dispatch:
   push:
     branches:
       - '*'
@@ -18,31 +19,52 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Debug
-        run: |
-          echo "github.ref -> {{ github.ref }}"
- 
+      - name: Info
+        run: echo "Parameters. ${{ github.event.base_ref }}, ${{ github.ref_type }}, ${{ github.ref }}"
+
       - name: Docker metadata
         id: metadata
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v4
         with:
           images: ${{ env.IMG_NAME }}
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=raw,value={{sha}},enable=${{ github.ref_type != 'tag' }}
-          
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v1
-        if: ${{ github.ref_type == 'tag' }}
+            
+      - name: Build Image
+        id: build-image
+        uses: redhat-actions/buildah-build@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          image: crudapp
+          tags: latest ${{ github.sha }}
+          containerfiles: |
+            ./Containerfile
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
+    # Podman Login action (https://github.com/redhat-actions/podman-login) also be used to log in,
+    # in which case 'username' and 'password' can be omitted.
+      - name: Push to dockerhub
+        id: push-to-docker-hub
+        uses: redhat-actions/push-to-registry@v2
         with:
-          context: .
-          push: ${{ github.event.base_ref =='refs/heads/main' && github.ref_type == 'tag' && !startsWith(github.ref, 'refs/tags/v0.')}}
-          tags: ${{ steps.metadata.outputs.tags }}
-          labels: ${{ steps.metadata.outputs.labels }}
+          image: ${{ steps.build-image.outputs.image }}
+          tags: ${{ steps.build-image.outputs.tags }}
+          registry: docker.io/imoratir
+          username: imoratir
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          
+          
+#       - name: Log in to Docker Hub
+#         uses: docker/login-action@v2
+#         with:
+#           username: ${{ secrets.DOCKER_USERNAME }}
+#           password: ${{ secrets.DOCKER_PASSWORD }}
+
+#       - name: Build and push Docker image
+#         uses: docker/build-push-action@v3
+#         with:
+#           context: .
+#           file: Containerfile
+#           push: ${{ github.event.base_ref =='refs/heads/main' && github.ref_type == 'tag' && !startsWith(github.ref, 'refs/tags/v0.')}}
+#           tags: ${{ steps.metadata.outputs.tags }}
+#           labels: ${{ steps.metadata.outputs.labels }}
