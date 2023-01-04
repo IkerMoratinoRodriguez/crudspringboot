@@ -1,0 +1,10 @@
+com\example\crudspringboot\infraestructure\repository\CrudRepository.class
+com\example\crudspringboot\application\APIController.class
+com\example\crudspringboot\domain\service\IPersonaService.class
+com\example\crudspringboot\domain\repository\PersonaRepository.class
+com\example\crudspringboot\application\Controlador.class
+com\example\crudspringboot\domain\service\PersonaService.class
+com\example\crudspringboot\infraestructure\repository\IRepository.class
+com\example\crudspringboot\infraestructure\configuration\BeanConfiguration.class
+com\example\crudspringboot\domain\Persona.class
+com\example\crudspringboot\CrudspringbootApplication.class
