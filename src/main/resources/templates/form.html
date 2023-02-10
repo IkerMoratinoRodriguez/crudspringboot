@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="col-sm-6">
+            <form th:action="@{/save}" th:object=${persona} method="POST">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Módulo persona</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="">ID</label>
+                            <input th:field="*{id}" type="text" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="">NOMBRES</label>
+                            <input th:field="*{name}" type="text" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="">TELEFONO</label>
+                            <input th:field="*{telefono}" type="text" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" value="Guardar" class="btn btn-success">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+version: '2.1'
+services:
+  server:
+    restart: always
+    ports:
+      - "8080:8080"
+    container_name: crud-container
+    image: imoratir/crud
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    ports:
+      - '3306:3306'
+    container_name: mysql01
+    environment:
+      - MYSQL_DATABASE=bdejemplo
+      - MYSQL_ROOT_PASSWORD=root
+    image: mysql  
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-proot"]
+      timeout: 20s
+      retries: 10
+
+  
+
