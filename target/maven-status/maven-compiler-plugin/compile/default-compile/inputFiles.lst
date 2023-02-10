@@ -1,0 +1,7 @@
+/home/imoratir_ubuntu/dev/crudspringboot/src/main/java/com/example/crudspringboot/DomainLayer/PersonaService.java
+/home/imoratir_ubuntu/dev/crudspringboot/src/main/java/com/example/crudspringboot/DomainLayer/IpersonaService.java
+/home/imoratir_ubuntu/dev/crudspringboot/src/main/java/com/example/crudspringboot/InfraestructureLayer/IRepository.java
+/home/imoratir_ubuntu/dev/crudspringboot/src/main/java/com/example/crudspringboot/DomainLayer/Persona.java
+/home/imoratir_ubuntu/dev/crudspringboot/src/main/java/com/example/crudspringboot/ApplicationLayer/APIController.java
+/home/imoratir_ubuntu/dev/crudspringboot/src/main/java/com/example/crudspringboot/ApplicationLayer/Controlador.java
+/home/imoratir_ubuntu/dev/crudspringboot/src/main/java/com/example/crudspringboot/CrudspringbootApplication.java
